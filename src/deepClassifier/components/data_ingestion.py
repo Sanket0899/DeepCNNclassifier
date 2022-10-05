@@ -7,6 +7,7 @@ from deepClassifier.utils import get_size
 from tqdm import tqdm
 from pathlib import Path
 
+
 class DataIngestion:
     def __init__(self,config: DataIngestionConfig):
         self.config=config
