@@ -132,3 +132,10 @@ dmypy.json
 .vscode/
 *.jpg
 *.zip
+artifacts/prepare_base_model/base_model_updated.h5
+artifacts/prepare_base_model/base_model.h5
+artifacts/prepare_callbacks/tensorboard_root_log_dir/2022-10-13-11-39-04/validation/events.out.tfevents.1665648672.SANAIK-T14.47220.1.v2
+artifacts/prepare_callbacks/tensorboard_root_log_dir/2022-10-13-16-25-20/train/events.out.tfevents.1665658531.SANAIK-T14.22272.0.v2
+artifacts/prepare_base_model/base_model_updated.h5
+artifacts/prepare_base_model/base_model.h5
+artifacts/prepare_base_model/base_model.h5
