@@ -1,7 +1,8 @@
 from deepClassifier.constants import CONFIG_FILE_PATH,PARAMS_FILE_PATH
 from deepClassifier.utils import read_yaml,create_directories
-from deepClassifier.entity import DataIngestionConfig,PrepareBaseModelConfig
+from deepClassifier.entity import DataIngestionConfig,PrepareBaseModelConfig,PrepareCallbackConfig,PrepareTrainingConfig
 from pathlib import Path
+import os
 
 class ConfigurationManager:
     def __init__(
@@ -41,3 +42,40 @@ class ConfigurationManager:
             params_classes=self.params.CLASSES
         )
         return prepare_base_model_config
+    
+    def get_prepare_callback_config(self) ->PrepareCallbackConfig:
+        config =self.config.prepare_callbacks
+        model_ckpt_dir=os.path.dirname(config.checkpoint_model_filepath)
+
+        create_directories([
+            Path(model_ckpt_dir),
+            Path(config.tensorboard_root_log_dir)
+            ])
+
+        prepare_callback_config=PrepareCallbackConfig(
+            root_dir=Path(config.root_dir),
+            tensorboard_root_log_dir=Path(config.tensorboard_root_log_dir),
+            checkpoint_model_filepath=Path(config.checkpoint_model_filepath)
+        )
+
+        return prepare_callback_config
+    
+    def get_prepare_training_config(self) ->PrepareTrainingConfig:
+        config =self.config.training
+        params=self.params
+
+        create_directories([Path(config.root_dir)])
+
+        prepare_training_config=PrepareTrainingConfig(
+            root_dir=Path(config.root_dir),
+            trained_model_path=Path(config.trained_model_path),
+            updated_base_model_path= Path(self.config.prepare_base_model.updated_base_model_path),
+            training_data= Path(os.path.join(self.config.data_ingestion.unzip_dir, "PetImages")),
+            params_epochs= params.EPOCHs,
+            params_batch_size= params.BATCH_SIZE,
+            params_learning_rate= params.LEARNING_RATE,
+            params_is_augmentation= params.AUGMENTATION,
+            params_image_size= params.IMAGE_SIZE
+        )
+
+        return prepare_training_config
