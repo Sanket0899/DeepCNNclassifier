@@ -139,3 +139,4 @@ artifacts/prepare_callbacks/tensorboard_root_log_dir/2022-10-13-16-25-20/train/e
 artifacts/prepare_base_model/base_model_updated.h5
 artifacts/prepare_base_model/base_model.h5
 artifacts/prepare_base_model/base_model.h5
+artifacts/prepare_callbacks/tensorboard_root_log_dir/2022-10-15-10-33-38/train/events.out.tfevents.1665810223.SANAIK-T14.29832.0.v2
