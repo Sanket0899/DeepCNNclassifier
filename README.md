@@ -12,4 +12,4 @@
 8. Test run pipeline stage
 9. run tox for testing your package
 10. Update the dvc.yaml
-11. run "dvc repro" for running all the stages in pipeline
+11. run "dvc repro" for running all the stages in pipeline(first command =dvc init)
